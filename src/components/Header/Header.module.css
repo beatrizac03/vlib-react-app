@@ -27,7 +27,7 @@ header {
   border-radius: 10px;
   padding: 0 0.5rem;
 }
- h2 {
+ header h2 {
   color: var(--white);
  }
 

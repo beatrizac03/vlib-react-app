@@ -3,8 +3,20 @@ import { addComment, getBooks } from "../../api/LivrosAPI";
 import { useEffect, useState } from "react";
 import CardLivro from "../CardLivro";
 
+import { useLivrosContext } from "../../context/ContextLivro";
+
 export default function Livros() {
-  const [livros, setLivros] = useState([]);
+  const { livros, fetchData } = useLivrosContext()
+
+  useEffect( () => {
+    fetchData()
+  }, [])
+
+  const livrosContinuarLendo = livros.filter( (livro) => livro.shelf == "currentlyReading")
+  const livrosQueroLer = livros.filter((livro) => livro.shelf == "wantToRead")
+  const livrosLidos = livros.filter((livro) => livro.shelf == "read");
+
+  /* const [livros, setLivros] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,14 +31,14 @@ export default function Livros() {
     (livro) => livro.shelf == "currentlyReading"
   );
   const livrosQueroLer = livros.filter((livro) => livro.shelf == "wantToRead");
-  const livrosLidos = livros.filter((livro) => livro.shelf == "read");
+  const livrosLidos = livros.filter((livro) => livro.shelf == "read"); */
 
   return (
     <main>
       <div className={styles.currentlyReading}>
         <h2>Continuar Lendo</h2>
         <div className={styles.wrapperLivros}>
-          {livrosCurrentlyReading.map((livro) => (
+          {livrosContinuarLendo.map((livro) => (
             <CardLivro livro={livro} />
           ))}
         </div>

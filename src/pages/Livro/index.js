@@ -1,4 +1,4 @@
-export default function Livro() {
+export default function Livro( {livro} ) {
     return(
         <></>
     )
