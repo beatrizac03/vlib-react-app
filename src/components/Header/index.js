@@ -1,7 +1,10 @@
 import styles from "./Header.module.css";
 import logo from "../../../src/img/vlib.svg";
+import { useState } from "react";
 
 export default function Header() {
+  const [search, setSearchInput] = useState('')
+
   return (
     <header>
       <div className={styles.container}>
