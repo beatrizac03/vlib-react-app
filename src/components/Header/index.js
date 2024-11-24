@@ -12,6 +12,8 @@ export default function Header() {
         <div className={styles.searchBar}>
           <input type="text" placeholder="encontre sua próxima leitura" />
         </div>
+
+        <h2>Pesquisar</h2>
       </div>
     </header>
   );
