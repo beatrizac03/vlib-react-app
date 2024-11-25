@@ -2,7 +2,6 @@ import styles from "./Livros.module.css";
 import { addComment, getBooks } from "../../api/LivrosAPI";
 import { useEffect, useState } from "react";
 import CardLivro from "../CardLivro";
-
 import { useLivrosContext } from "../../context/ContextLivro";
 
 export default function Livros() {
@@ -11,6 +10,13 @@ export default function Livros() {
   useEffect( () => {
     fetchData()
   }, [])
+
+  const handleShelfChange = (livro, newShelf) => {
+    const updatedLivros = livros.map((l) =>
+      l.id === livro.id ? { ...l, shelf: newShelf } : l
+    );
+    setLivros(updatedLivros);
+  };
 
   const livrosContinuarLendo = livros.filter( (livro) => livro.shelf == "currentlyReading")
   const livrosQueroLer = livros.filter((livro) => livro.shelf == "wantToRead")
@@ -22,7 +28,7 @@ export default function Livros() {
         <h2>Continuar Lendo</h2>
         <div className={styles.wrapperLivros}>
           {livrosContinuarLendo.map((livro) => (
-            <CardLivro livro={livro} />
+            <CardLivro livro={livro} onShelfChange={handleShelfChange}/>
           ))}
         </div>
       </div>
@@ -30,7 +36,7 @@ export default function Livros() {
         <h2>Quero Ler</h2>
         <div className={styles.wrapperLivros}>
           {livrosQueroLer.map((livro) => (
-            <CardLivro livro={livro} />
+            <CardLivro livro={livro} onShelfChange={handleShelfChange}/>
           ))}
         </div>
       </div>
@@ -38,7 +44,7 @@ export default function Livros() {
         <h2>Lido</h2>
         <div className={styles.wrapperLivros}>
           {livrosLidos.map((livro) => (
-            <CardLivro livro={livro} />
+            <CardLivro livro={livro} onShelfChange={handleShelfChange}/>
           ))}
         </div>
       </div>
