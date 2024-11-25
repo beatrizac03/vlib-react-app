@@ -23,7 +23,7 @@ export default function CardLivro({ livro, onShelfChange }) {
   };
 
   return (
-    /*<Link to={`/${livro.id}`}> */
+    <Link to={`/${livro.id}`}> 
     <div className={styles.card}>
       <div className={styles.imgCard}>
         <img
@@ -46,6 +46,6 @@ export default function CardLivro({ livro, onShelfChange }) {
         <option value="read">Lido</option>
       </select>
     </div>
-    /* </Link> */
+    </Link>
   );
 }
