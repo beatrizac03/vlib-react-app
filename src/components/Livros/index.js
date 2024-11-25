@@ -6,7 +6,7 @@ import CardLivro from "../CardLivro";
 import { useLivrosContext } from "../../context/ContextLivro";
 
 export default function Livros() {
-  const { livros, fetchData } = useLivrosContext()
+  const { livros, setLivros, fetchData } = useLivrosContext()
 
   useEffect( () => {
     fetchData()
@@ -15,23 +15,6 @@ export default function Livros() {
   const livrosContinuarLendo = livros.filter( (livro) => livro.shelf == "currentlyReading")
   const livrosQueroLer = livros.filter((livro) => livro.shelf == "wantToRead")
   const livrosLidos = livros.filter((livro) => livro.shelf == "read");
-
-  /* const [livros, setLivros] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const dados = await getBooks();
-      setLivros(dados);
-    }
-
-    fetchData();
-  }, []);
-
-  const livrosCurrentlyReading = livros.filter(
-    (livro) => livro.shelf == "currentlyReading"
-  );
-  const livrosQueroLer = livros.filter((livro) => livro.shelf == "wantToRead");
-  const livrosLidos = livros.filter((livro) => livro.shelf == "read"); */
 
   return (
     <main>

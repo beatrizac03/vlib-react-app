@@ -32,11 +32,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 20px;
+  color: var(--black);
 }
 
 .txtCard h3 {
   font-size: 15px;
   font-weight: 500;
+  color: var(--black);
 }
 
 a {
