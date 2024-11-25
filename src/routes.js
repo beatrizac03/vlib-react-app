@@ -6,16 +6,15 @@ import LivrosProvider from "./context/ContextLivro";
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
-      <LivrosProvider>
+    <LivrosProvider>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="search" element={<SearchPage />} />
-            <Route path=":id" element={<Livro />} />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/:id" element={<Livro />} />
         </Routes>
-      </LivrosProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </LivrosProvider>
   );
 }
 

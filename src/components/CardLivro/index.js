@@ -12,7 +12,7 @@ export default function CardLivro({ livro }) {
   };
 
   return (
-    <Link to={`/livro/${livro.id}`} >
+    <Link to={`/${livro.id}`} >
       <div className={styles.card}>
         <div className={styles.imgCard}>
           <img

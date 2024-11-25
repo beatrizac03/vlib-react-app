@@ -1,17 +1,7 @@
 import React, {createContext, useContext, useState} from "react";
 import { addComment, getBooks } from "../api/LivrosAPI";
 
-const LivrosContext = createContext()
- /* LivrosContext.displayName = "Livros" */
-
-export function useLivrosContext() {
-    const context = useContext(LivrosContext)
-
-    if (!context) {
-        throw new Error("useLivrosContext deve ser usado dentro de um LivrosProvider");
-      }
-      return context;
-}
+export const LivrosContext = createContext()
 
 export default function LivrosProvider( {children} ) {
     const [livros, setLivros] = useState([])
@@ -35,9 +25,20 @@ export default function LivrosProvider( {children} ) {
     }
 
     return(
-        <LivrosContext.Provider value={{ livros, fetchData, adcComment }}>
+        <LivrosContext.Provider value={{ livros, setLivros, fetchData, adcComment }}>
             {children}
         </LivrosContext.Provider>
     )
 }
+
+export function useLivrosContext() {
+    const context = useContext(LivrosContext)
+
+    if (!context) {
+        throw new Error("useLivrosContext deve ser usado dentro de um LivrosProvider");
+      } 
+      return context;
+}
+
+
 
